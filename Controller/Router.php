@@ -8,6 +8,7 @@ class Router implements \Magento\Framework\App\RouterInterface
     protected $_response;
     protected $scopeConfig;
 
+
     public function __construct(
         \Magento\Framework\App\ActionFactory $actionFactory,
         \Magento\Framework\App\ResponseInterface $response,
@@ -22,9 +23,11 @@ class Router implements \Magento\Framework\App\RouterInterface
     public function match(\Magento\Framework\App\RequestInterface $request)
     {
         $identifier = trim($request->getPathInfo(), '/');
-        $custom_url = $this->scopeConfig->getValue('wtrade/general/frontend_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $customUrl = $this->scopeConfig->getValue('wtrade/general/frontend_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
-        if (strpos($identifier, $custom_url) !== false) {
+        $params = $request->getParams();
+
+        if ($identifier == $customUrl) {
             $request->setModuleName('ayastrwtrade_router')->
             setControllerName('index')->
             setActionName('index');

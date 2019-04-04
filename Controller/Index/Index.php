@@ -6,17 +6,20 @@ use Magento\Framework\App\Action\Context;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    protected $_resultPageFactory;
+    protected $resultPageFactory;
 
-    public function __construct(Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory)
+    public function __construct(
+        Context $context,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+    )
     {
-        $this->_resultPageFactory = $resultPageFactory;
         parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
     }
 
     public function execute()
     {
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
 
         return $resultPage;
     }
