@@ -7,8 +7,7 @@
 <div class="form-group">
     <form action="<?= $block->getUrl('*/Cart/AddToCart') ?>">
         <label>SKU:
-            <input id="sku" name="sku" placeholder="Enter SKU" list="sku-list">
-            <datalist id="sku-list"></datalist>
+            <input id="sku" name="sku" placeholder="Enter SKU">
         </label>
         <label>Amount:
             <input id="qty" name="qty" placeholder="Enter amount">
@@ -16,14 +15,3 @@
         <button type="submit" value="Submit">Add to cart</button>
     </form>
 </div>
-
-
-<?php
-
-foreach ($block->getProductCollection() as $product) {
-    print_r($product->getData());
-    echo "<br>";
-}
-
-?>
-

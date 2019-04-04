@@ -4,6 +4,7 @@ namespace Ayastr\Wtrade\Controller\Cart;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\LocalizedException;
 
 class AddToCart extends \Magento\Framework\App\Action\Action
 {
@@ -39,14 +40,13 @@ class AddToCart extends \Magento\Framework\App\Action\Action
             );
             $this->cart->addProduct($product, $params);
             $this->cart->save();
-            $this->messageManager->addSuccessMessage(__('Products were successfully added.'));
+            $this->messageManager->addSuccessMessage(__('Product was successfully added.'));
         } catch (NoSuchEntityException $e) {
-            $this->messageManager->addExceptionMessage($e, __("The product that was requested doesn't exist. Verify the product and try again."));
-
-            return $this->resultRedirectFactory->create()->setPath('*/Index/Index');
+            $this->messageManager->addExceptionMessage($e);
+        } catch (LocalizedException $e) {
+            $this->messageManager->addExceptionMessage($e);
         }
 
-        //return $this->actionFactory->create('Magento\Framework\App\Action\Forward', ['request' => $request]);
         return $this->resultRedirectFactory->create()->setPath('*/Index/Index');
     }
 }
