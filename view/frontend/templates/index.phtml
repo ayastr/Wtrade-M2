@@ -1,6 +1,29 @@
-<form>
-    <div class="form-group">
-        <label for="Text">Text here</label>
-        <input type="text" class="form-control" id="Text" placeholder="Enter text">
-    </div>
-</form>
+<?php
+/**
+* @var \Magento\Framework\View\Element\Template $block
+*/
+?>
+
+<div class="form-group">
+    <form action="<?= $block->getUrl('*/Cart/AddToCart') ?>">
+        <label>SKU:
+            <input id="sku" name="sku" placeholder="Enter SKU" list="sku-list">
+            <datalist id="sku-list"></datalist>
+        </label>
+        <label>Amount:
+            <input id="qty" name="qty" placeholder="Enter amount">
+        </label>
+        <button type="submit" value="Submit">Add to cart</button>
+    </form>
+</div>
+
+
+<?php
+
+foreach ($block->getProductCollection() as $product) {
+    print_r($product->getData());
+    echo "<br>";
+}
+
+?>
+

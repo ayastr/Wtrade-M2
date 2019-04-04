@@ -3,7 +3,7 @@
       layout="2columns-left">
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" name="test" template="Ayastr_Wtrade::index.phtml"/>
+            <block class="Ayastr\Wtrade\Block\Index" name="test" template="Ayastr_Wtrade::index.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
 </page>
