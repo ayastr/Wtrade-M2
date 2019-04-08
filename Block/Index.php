@@ -4,8 +4,12 @@ namespace Ayastr\Wtrade\Block;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
-    protected $_productCollectionFactory;
+    protected $productCollectionFactory;
+    /**
+     * @var \Magento\Catalog\Api\ProductRepositoryInterface
+     */
     private $productRepository;
+
 
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
@@ -15,13 +19,14 @@ class Index extends \Magento\Framework\View\Element\Template
     )
     {
         parent::__construct($context, $data);
-        $this->_productCollectionFactory = $productCollectionFactory;
+        $this->productCollectionFactory = $productCollectionFactory;
+
         $this->productRepository = $productRepository;
     }
 
     public function getProductCollection()
     {
-        $collection = $this->_productCollectionFactory->create();
+        $collection = $this->productCollectionFactory->create();
         $collection->addAttributeToSelect('SKU');
         $collection->setPageSize(10);
         return $collection;
@@ -32,4 +37,3 @@ class Index extends \Magento\Framework\View\Element\Template
         return $this->productRepository->get($sku);
     }
 }
-

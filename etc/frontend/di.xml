@@ -13,5 +13,8 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Checkout\Controller\Cart\Add">
+        <plugin name="Ayastr_Wtrade_Plugin" type="Ayastr\Wtrade\Plugin\SetProductParams" sortOrder="10" disabled="false"/>
+    </type>
 </config>
 

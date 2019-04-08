@@ -25,7 +25,7 @@ require(["jquery", "jquery/ui"], function ($) {
                 results: function () {
                 }
             },
-            minLength: 1,
+            minLength: 2,
             select: function (event, ui) {
 
                 console.log(ui.item);

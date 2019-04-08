@@ -43,6 +43,8 @@ class ProductStore extends \Magento\Framework\Model\AbstractModel
             ->setCurPage(1);
         $this->stockHelper->addInStockFilterToCollection($productCollection);
         $productCollection->load();
+
+
         foreach ($productCollection as $product) {
             $result[$product->getSKU()] = $product->getName();
         }

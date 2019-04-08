@@ -1,17 +1,19 @@
 <?php
 /**
-* @var \Magento\Framework\View\Element\Template $block
+* @var \Ayastr\Wtrade\Block\Index $block
 */
 ?>
 
 <div class="form-group">
-    <form action="<?= $block->getUrl('*/Cart/AddToCart') ?>">
+    <form id="add-product" translate="label">
+        <?php echo $block->getBlockHtml('formkey') ?>
+
         <label>SKU:
             <input id="sku" name="sku" placeholder="Enter SKU">
         </label>
         <label>Amount:
             <input id="qty" name="qty" placeholder="Enter amount">
         </label>
-        <button type="submit" value="Submit">Add to cart</button>
     </form>
+    <button id="post-btn">Add to cart</button>
 </div>
