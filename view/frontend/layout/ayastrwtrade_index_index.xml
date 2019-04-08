@@ -2,6 +2,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
       layout="2columns-left">
     <head>
+        <css src="Ayastr_Wtrade::css/style.css"></css>
         <script src="Ayastr_Wtrade::js/autocomplete.js"></script>
         <script src="Ayastr_Wtrade::js/addToCart.js"></script>
     </head>
