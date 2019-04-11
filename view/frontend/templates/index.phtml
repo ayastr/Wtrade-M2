@@ -7,7 +7,7 @@
 <div class="form-group">
     <form id="add-product" translate="label">
         <?php echo $block->getBlockHtml('formkey') ?>
-
+        <input type="hidden" name="added-from-wtrade" value="1">
         <label>SKU:
             <input id="sku" name="sku" placeholder="Enter SKU">
         </label>

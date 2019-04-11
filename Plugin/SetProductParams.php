@@ -18,11 +18,18 @@ class SetProductParams
 
     public function beforeExecute(\Magento\Checkout\Controller\Cart\Add $interceptor)
     {
-        $sku = $interceptor->getRequest()->getParam('sku');
-        $product = $this->productRepository->get($sku);
-        $interceptor->getRequest()->setParams([
-            'product' => $product->getId(),
-            'qty' => $interceptor->getRequest()->getParam('qty')
-        ]);
+        $addedFromWtrade = $interceptor->getRequest()->getParam('added-from-wtrade');
+        if ($addedFromWtrade) {
+            try {
+                $requestParams = $interceptor->getRequest()->getParams();
+                $product = $this->productRepository->get($requestParams['sku']);
+                $interceptor->getRequest()->setParams([
+                    'product' => $product->getId(),
+                    'qty' => $requestParams['qty'],
+                ]);
+            } catch (NoSuchEntityException $e) {
+                $this->messageManager->addErrorMessage($e->getMessage());
+            }
+        }
     }
 }
